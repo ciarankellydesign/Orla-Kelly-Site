@@ -285,8 +285,10 @@ $btnClose.on('click', function () {
 });
 
 // ------------------------------------------------------------
-// BACKGROUND CLICK CLOSE
+// BACKGROUND or Project CLICK CLOSE
 // ------------------------------------------------------------
-$('.g_nav_bg_cont').on('click', function () {
-  if (isModalOpen) $btnClose.trigger('click');
+$('.g_nav_bg_cont, .g_nav_project-item_inner').on('click', function () {
+  if (isModalOpen) {
+    $btnClose.trigger('click');
+  }
 });
