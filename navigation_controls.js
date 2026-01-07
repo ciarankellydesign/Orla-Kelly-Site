@@ -289,7 +289,3 @@ $btnClose.on('click', function () {
 // ------------------------------------------------------------
 $('.g_nav_bg_cont').on('click', function () { if (isModalOpen) $btnClose.trigger('click'); });
 
-// ------------------------------------------------------------
-// PROJECT CLICK CLOSE
-// ------------------------------------------------------------
-$('.g_nav_project-item_cont').on('click', function () { if (isModalOpen) $btnClose.trigger('click'); });
