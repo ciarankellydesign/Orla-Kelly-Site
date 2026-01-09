@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function () {
+
 const morphSVG = `
 <div class="home_hero_logo-morph">
 <svg width = "900" height = "900" viewBox = "0 0 900 900" fill = "none" xmlns = "http://www.w3.org/2000/svg" >
@@ -135,4 +137,6 @@ $(function () {
 $(window).on("resize", () => {
   centerX = window.innerWidth / 2;
   centerY = window.innerHeight / 2;
+});
+
 });
