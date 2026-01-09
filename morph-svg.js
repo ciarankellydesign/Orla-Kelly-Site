@@ -65,7 +65,7 @@ let targetProgress = 0;
 let currentProgress = 0;
 
 // lower = more lag / smoothing (try 0.05–0.15)
-const SMOOTHING = 0.06;
+const SMOOTHING = 0.03;
 
 // Drive timeline + scale from a smoothed value
 gsap.ticker.add(() => {
