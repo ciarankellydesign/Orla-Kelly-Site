@@ -1,24 +1,4 @@
 
-if (!document.querySelector('.home_hero_logo-container')) {
-  console.warn('[morph-svg] Container not found');
-  return;
-}
-
-if (typeof gsap === 'undefined') {
-  console.warn('[morph-svg] GSAP not found');
-  return;
-}
-
-if (typeof MorphSVGPlugin === 'undefined') {
-  console.warn('[morph-svg] MorphSVGPlugin not found');
-  return;
-}
-
-if (typeof $ === 'undefined') {
-  console.warn('[morph-svg] jQuery not found');
-  return;
-}
-
 
 const morphSVG = `
 <div class="home_hero_logo-morph">
@@ -85,7 +65,7 @@ let targetProgress = 0;
 let currentProgress = 0;
 
 // lower = more lag / smoothing (try 0.05–0.15)
-const SMOOTHING = 0.04;
+const SMOOTHING = 0.06;
 
 // Drive timeline + scale from a smoothed value
 gsap.ticker.add(() => {
