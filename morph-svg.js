@@ -2,7 +2,6 @@ const DESKTOP_MIN_WIDTH = 992;
 const MOBILE_OSCILLATION_DURATION = 22; // seconds
 
 const MIN_RADIUS_PX = 100;
-const SMOOTHING = 0.04;
 const SCALE_MULTIPLIER = 2.5; 
 
 const COLOUR_DURATION = 5;
@@ -12,6 +11,15 @@ const COLOUR_DURATION = 5;
 window.Webflow = window.Webflow || [];
 window.Webflow.push(() => {
   const container = document.querySelector('.home_hero_logo-container');
+
+const rootStyles = getComputedStyle(document.documentElement);
+
+const rawSmoothing = parseFloat(
+  rootStyles.getPropertyValue('--_components---morph--morph-smoothing')
+);
+
+const SMOOTHING = gsap.utils.clamp(0.01, 0.2, rawSmoothing || 0.04);
+
 
   if (!container) {
     console.warn('[morph-svg] container not found');
@@ -129,7 +137,6 @@ window.Webflow.push(() => {
       // ----------------------------------
       // Colour cycling
       // ----------------------------------
-      const rootStyles = getComputedStyle(document.documentElement);
 
       const getCssVar = (name) =>
         rootStyles.getPropertyValue(name).trim();
