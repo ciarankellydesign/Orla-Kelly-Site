@@ -1,5 +1,6 @@
 
-(() => {
+window.Webflow = window.Webflow || [];
+window.Webflow.push(() => {
   const container = document.querySelector('.home_hero_logo-container');
 
   if (!container) {
@@ -7,23 +8,28 @@
     return;
   }
 
-  fetch('./assets/morph-svg.svg')
+  fetch('https://cdn.jsdelivr.net/gh/ciarankellydesign/orla-kelly-site@v13/assets/morph-svg.svg')
     .then(res => {
       if (!res.ok) throw new Error('SVG fetch failed');
       return res.text();
     })
     .then(svg => {
+      console.log('[morph-svg] SVG length:', svg.length);
+
       container.innerHTML = `
         <div class="home_hero_logo-morph">
           ${svg}
         </div>
       `;
-      console.log('[morph-svg] SVG injected');
+
+      console.log('[morph-svg] SVG injected (post-Webflow)');
     })
     .catch(err => {
       console.error('[morph-svg] fetch error', err);
     });
-})();
+});
+
+
 
 
 
