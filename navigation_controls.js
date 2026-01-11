@@ -63,6 +63,10 @@ let projectsHeight = $('.g_nav_section_cont[data-section="projects"]').outerHeig
 aboutHeight = Math.min(aboutHeight, maxModalHeight);
 projectsHeight = Math.min(projectsHeight, maxModalHeight);
 
+// Update base modal width after height capture
+document.documentElement.style.setProperty('--_components---nav--modal-base-width', '5rem');
+
+
 console.log('aboutHeight:', aboutHeight);
 console.log('projectsHeight:', projectsHeight);
 console.log('maxModalHeight:', maxModalHeight);

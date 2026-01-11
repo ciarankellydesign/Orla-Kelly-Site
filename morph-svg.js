@@ -18,32 +18,6 @@ const rawSmoothing = parseFloat(
 const SMOOTHING = gsap.utils.clamp(0.01, 0.2, rawSmoothing || 0.04);
 
 
-// Safari blend-mode repaint fix
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-if (isSafari) {
-  let ticking = false;
-
-  function forceRepaint() {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const el = document.querySelector('.home_hero_logo-container');
-        if (el) {
-          el.style.transform = 'scale(1.0001)';
-          setTimeout(() => {
-            el.style.transform = 'scale(1)';
-          }, 30);
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('mousemove', forceRepaint);
-}
-
-
   if (!container) {
     console.warn('[morph-svg] container not found');
     return;
