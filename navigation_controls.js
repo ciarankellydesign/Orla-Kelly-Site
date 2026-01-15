@@ -112,8 +112,8 @@ function animateOpen(height) {
   const tl = gsap.timeline();
 
   tl.to('.g_nav_modal_wrap, .g_nav_filters_cont, .g_nav_filter-item', {
-      duration: ANIM_DURATION,
-      ease: ANIM_EASE,
+      duration: 0.6,
+      ease: "power3.out",
       width: modalOpenWidth
     })
     .to($btnClose, {
@@ -125,7 +125,7 @@ function animateOpen(height) {
     .to('.g_nav_filters_cont', {
       duration: 0.4,
       autoAlpha: 1,
-      ease: ANIM_EASE,
+      ease: "power3.out",
       width: "auto"
     }, "<")
     .fromTo('.g_nav_section_wrap', { height: 0 },
