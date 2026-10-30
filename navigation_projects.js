@@ -1,28 +1,34 @@
+// ------------------------------------------------------------
+// PROJECT THUMBNAILS ON HOVER
+// Matches each list item to its thumbnail by CMS slug (data-slug),
+// so it works for both the Projects and Workshops panels.
+// Replaces project-thumbnails.js, which duplicated this handler.
+// ------------------------------------------------------------
+function clearCurrent() {
+  $('.g_nav_filter-item.current').removeClass('current');
+  $('.g_nav_project-thumbnail_image.current').removeClass('current');
+}
+
 $('.g_nav_project-item_cont')
   .on('mouseenter', function () {
-    // get parent filter item
-    const $filterItem = $(this).closest('.g_nav_filter-item');
-    const projectIndex = $filterItem.index();
+    const $cont = $(this);
+    const slug = $cont.attr('data-slug');
 
-    // clear existing state
-    $('.g_nav_filter-item.current').removeClass('current');
-    $('.g_nav_project-thumbnail_image.current').removeClass('current');
+    clearCurrent();
 
-    // set current on parent
-    $filterItem.addClass('current');
+    // set current on parent list item
+    $cont.closest('.g_nav_filter-item').addClass('current');
 
-    // set current on matching thumbnail image
-    $('.g_nav_project-thumbnail_item')
-      .eq(projectIndex)
-      .find('.g_nav_project-thumbnail_image')
-      .addClass('current');
+    // set current on the thumbnail with the same slug
+    if (slug) {
+      $(`.g_nav_project-thumbnail_item[data-slug="${CSS.escape(slug)}"]`)
+        .find('.g_nav_project-thumbnail_image')
+        .addClass('current');
+    }
 
-    console.log('hover in (project):', projectIndex);
+    console.log('hover in (project):', slug);
   })
   .on('mouseleave', function () {
-    // clear state on exit
-    $('.g_nav_filter-item.current').removeClass('current');
-    $('.g_nav_project-thumbnail_image.current').removeClass('current');
-
+    clearCurrent();
     console.log('hover out (project)');
   });
